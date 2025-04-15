@@ -1,57 +1,57 @@
-# Jantar dos Filósofos - Prova de Programação Paralela e Distribuída
+# Philosophers' Dinner – Parallel and Distributed Programming Assignment
 
-## Descrição
+## Description
 
-Cinco filósofos estão sentados em uma mesa redonda. Cada filósofo precisa de dois garfos para comer, mas cada garfo só pode ser usado por um filósofo por vez. O código implementa um servidor que simula o comportamento dos filósofos utilizando múltiplas conexões via Telnet. Cada filósofo pode alternar entre o estado de **pensando** e **comendo**, com a possibilidade de pensar por um tempo aleatório e comer por até 1 minuto.
+Five philosophers are seated around a round table. Each philosopher needs two forks to eat, but each fork can only be used by one philosopher at a time. This code implements a server that simulates the philosophers' behavior using multiple Telnet connections. Each philosopher can alternate between **thinking** and **eating**, with the possibility of thinking for a random amount of time and eating for up to 1 minute.
 
-## Instruções de Uso
+## Usage Instructions
 
-1. **Compilação**:
-   Para compilar o código, basta usar o comando `javac`:
+1. **Compilation**:  
+   To compile the code, simply use the `javac` command:
 
    ```bash
    javac Server.java
    ```
 
-2. **Execução**:
-   Após a compilação, execute o servidor com o comando:
+2. **Execution**:  
+   After compilation, run the server with the following command:
 
    ```bash
    java Server
    ```
 
-   O servidor será iniciado e ficará aguardando conexões de clientes na porta **12345**.
+   The server will start and wait for client connections on port **12345**.
 
-3. **Conexão via Telnet**:
-   Em outro terminal, você pode usar o Telnet para se conectar ao servidor. Execute o seguinte comando:
+3. **Telnet Connection**:  
+   In another terminal, you can use Telnet to connect to the server. Run the following command:
 
    ```bash
    telnet localhost 12345
    ```
 
-   Ao se conectar, o servidor enviará uma mensagem de saudação e você poderá interagir com os filósofos usando os comandos:
+   Upon connection, the server will send a greeting message, and you'll be able to interact with the philosophers using the following commands:
 
-   - **HELLO**: Recebe uma saudação do servidor.
-   - **THINK**: O filósofo começa a pensar, quando o garfo é liberado, ele come.
-   - **EAT**: O filósofo tenta comer, se não tem um garfo, ele pensa. O tempo de refeição será aleatório, mas com no máximo 1 minuto.
+   - **HELLO**: Receive a greeting from the server.
+   - **THINK**: The philosopher starts thinking. Once the forks are free, they will begin eating.
+   - **EAT**: The philosopher attempts to eat. If forks aren't available, they will think. Eating time is random but limited to a maximum of 1 minute.
 
-   Você pode abrir várias conexões Telnet (até 5) para simular os filósofos tentando comer.
+   You can open multiple Telnet connections (up to 5) to simulate philosophers trying to eat.
 
-4. **Comando de Sair**:
-   Para desconectar, basta fechar a conexão Telnet.
+4. **Exit Command**:  
+   To disconnect, simply close the Telnet connection.
 
-## Funcionamento
+## How It Works
 
-- **Filosofos**: São representados por clientes que se conectam ao servidor via Telnet. Cada cliente recebe um ID exclusivo.
-- **Garfos**: São recursos compartilhados entre os filósofos. Cada filósofo precisa de dois garfos para comer.
-- **Comportamento**: Filósofos alternam entre os estados **pensando** e **comendo**. Se os garfos estiverem disponíveis, o filósofo come; caso contrário, ele pensa até que os garfos fiquem disponíveis.
+- **Philosophers**: Represented by clients connecting to the server via Telnet. Each client receives a unique ID.
+- **Forks**: Shared resources among philosophers. Each philosopher needs two forks to eat.
+- **Behavior**: Philosophers alternate between the **thinking** and **eating** states. If forks are available, the philosopher eats; otherwise, they think until the forks become available.
 
-## Limitações
+## Limitations
 
-- O servidor limita o número de refeições para **10 vezes** por filósofo, após o que ele se considera "cheio".
-- O tempo de pensamento é gerado aleatoriamente, com um valor entre **10 e 70 segundos**.
-- O tempo de refeição é garantido para ser **no maxímo 1 minuto**, com um valor aleatório dentro desse limite.
+- The server limits the number of meals to **10 times** per philosopher, after which they are considered "full."
+- The thinking time is randomly generated between **10 and 70 seconds**.
+- Eating time is randomly generated but guaranteed to be **no more than 1 minute**.
 
-## Objetivo
+## Purpose
 
-Este código foi desenvolvido para demonstrar o uso de programação paralela e distribuída, simulando um sistema onde múltiplos filósofos (clientes) tentam acessar recursos compartilhados (garfos) enquanto alternam entre os estados de **pensando** e **comendo**.
+This code was developed to demonstrate the use of parallel and distributed programming by simulating a system where multiple philosophers (clients) attempt to access shared resources (forks) while alternating between the **thinking** and **eating** states.
